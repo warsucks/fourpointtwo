@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Four Point Two</title>
+    <script src="js/lib/angular.js"></script>
+    <script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+</head>
+
+<body ng-app="fourpointtwo">
+  <div ng-controller="MainController">
+    <form ng-submit="setCurrentSchoolById(currentSchoolId)">
+      <label>
+        School
+        <select ng-model="currentSchoolId">
+          <option value="55eb12fb968466bb12adebe6">University of Michigan</option>
+          <option value="55eb12fb968466bb12adebe7">Michigan State University</option>
+          <option value="55eb12fb968466bb12adebe9">Wayne State University</option>
+          <option value="55eb12fb968466bb12adebe8">Eastern Michigan University</option>
+        </select>
+      </label>
+      <input type="submit"></input>
+    </form>
+    Current School: {{currentSchool.name}}
+    <rating-form school="currentSchool"><rating-form>
+  </div>
+</body>
+
+<script src="js/app.js"></script>
+<script src="js/mainController.js"></script>
+<script src="js/ratings/ratingForm/ratingForm.js"></script>
+<script src="js/ratings/ratingFactory.js"></script>
+<script src="js/ratings/newRatingController.js"></script>
+<script src="js/schools/schoolController.js"></script>
+<script src="js/schools/schoolFactory.js"></script>
+</html>

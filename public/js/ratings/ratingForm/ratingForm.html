@@ -1,0 +1,71 @@
+<div>
+  <p>Rate {{currentSchool.name}}</p>
+  <form ng-submit="addRating(userId, schoolId, ratings)">
+    <span>Faculty</span>
+    <label>
+      <input type="radio" ng-model="ratings.facultyRating" value="1">
+      1
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.facultyRating" value="2">
+      2
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.facultyRating" value="3">
+      3
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.facultyRating" value="4">
+      4
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.facultyRating" value="5">
+      5
+    </label><br>
+
+    <span>Diversity</span>
+    <label>
+      <input type="radio" ng-model="ratings.diversityRating" value="1">
+      1
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.diversityRating" value="2">
+      2
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.diversityRating" value="3">
+      3
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.diversityRating" value="4">
+      4
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.diversityRating" value="5">
+      5
+    </label><br>
+
+    <span>Social Scene</span>
+    <label>
+      <input type="radio" ng-model="ratings.socialSceneRating" value="1">
+      1
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.socialSceneRating" value="2">
+      2
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.socialSceneRating" value="3">
+      3
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.socialSceneRating" value="4">
+      4
+    </label>
+    <label>
+      <input type="radio" ng-model="ratings.socialSceneRating" value="5">
+      5
+    </label><br>
+    <input type="submit" name="Submit"></input>
+  </form>
+</div>
