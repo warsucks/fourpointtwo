@@ -1,0 +1,17 @@
+<div>
+  <p>Rate {{school.name}}</p>
+  <p ng-show="userAlreadyRated">You've already rated {{school.name}}. You can update your ratings below.</p>
+  <form ng-submit="addRating('55eb5842ff02107647d2b32c',school._id, ratings)">
+    <div ng-repeat="category in categories">
+      <span>{{getCategoryDisplayStr(category)}}</span>
+      <span ng-repeat="number in options">
+        <label>
+          <input type="radio" ng-model="ratings[category]" name="{{category}}" ng-value="number">
+          {{number}}
+        </label>
+      </span>
+    </div>
+    <br>
+    <input type="submit" name="Submit"></input>
+  </form>
+</div>

@@ -40,11 +40,33 @@ var users = [
   }
 ];
 
-// var ratings = [
-//   {
-//
-//   },
-// ]
+var ratings = [
+  {
+    author: "55eb5842ff02107647d2b32c",
+    school: "55eb5842ff02107647d2b326",
+    values: {
+      faculty: 3,
+      diversity: 2,
+      socialScene: 4,
+      studentBody: 3,
+      localComm: 4,
+      adminSupport: 4
+    }
+  },
+  {
+    author: "55eb5842ff02107647d2b32d",
+    school: "55eb5842ff02107647d2b326",
+    values: {
+      faculty: 2,
+      diversity: 1,
+      socialScene: 3,
+      studentBody: 2,
+      localComm: 2,
+      adminSupport: 2,
+      finAid: 2
+    }
+  }
+]
 
 var bluebird = require('bluebird');
 var mongoose = require('mongoose');
@@ -58,7 +80,7 @@ mongoose.connect('mongodb://localhost/fourpointtwo');
 
 var wipeDB = function () {
 
-    var models = [School, Rating,User];
+    var models = [Rating];
 
     models.forEach(function (model) {
         model.find({}).remove(function () {});
@@ -70,29 +92,29 @@ var wipeDB = function () {
 
 var seed = function () {
 
-    School.create(schools, function (err) {
-        if (err) {
-            console.error(err);
-        }
-        console.log('Schools seeded!');
-        process.kill(0);
-    });
-
-    User.create(users, function (err) {
-        if (err) {
-            console.error(err);
-        }
-        console.log('Users seeded!');
-        process.kill(0);
-    });
-
-    // Rating.create(ratings, function (err) {
+    // School.create(schools, function (err) {
     //     if (err) {
     //         console.error(err);
     //     }
-    //     console.log('Ratings seeded!');
+    //     console.log('Schools seeded!');
     //     process.kill(0);
     // });
+    //
+    // User.create(users, function (err) {
+    //     if (err) {
+    //         console.error(err);
+    //     }
+    //     console.log('Users seeded!');
+    //     process.kill(0);
+    // });
+    //
+    Rating.create(ratings, function (err) {
+        if (err) {
+            console.error(err);
+        }
+        console.log('Ratings seeded!');
+        process.kill(0);
+    });
 };
 
 mongoose.connection.once('open', function () {

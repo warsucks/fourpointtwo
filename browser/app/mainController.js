@@ -1,5 +1,11 @@
 app.controller("MainController", function($scope, $state, SchoolFactory)
 {
+  SchoolFactory.getAllSchools()
+  .then(function(schools)
+  {
+    $scope.allSchools = schools;
+  });
+
   $scope.setCurrentSchoolById = function(schoolId)
   {
       SchoolFactory.getSchoolById(schoolId)

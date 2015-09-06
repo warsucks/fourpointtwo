@@ -1,6 +1,12 @@
 <div>
+  <h2>School</h2>
   <p>{{school.name}}</p>
   <p>{{school.city}}, {{school.state}}</p>
+  <h2>Ratings</h2>
+  <p ng-hide="school.existentRatings.length">No one has rated this school yet. Be the first!</p>
+  <ul ng-show="school.existentRatings.length">
+    <li ng-repeat="category in categories">{{getCategoryDisplayStr(category)}}: {{school.avgRatings[category]}}</li>
+  </ul>
   <button ng-hide="rating" ui-sref="school.rate" ng-click="rating=true">Rate</button>
   <div ng-show="rating">
     <button ng-show="rating" ng-click="rating=false" ui-sref="school({schoolId: school._id})">Don't Rate</button>

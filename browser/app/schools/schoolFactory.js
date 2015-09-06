@@ -1,10 +1,17 @@
 app.factory("SchoolFactory", function($http)
 {
   return {
+    getAllSchools: function()
+    {
+      return $http.get('/schools')
+      .then(function(response)
+      {
+        return response.data;
+      });
+    },
     getSchoolById: function(schoolId)
     {
-      console.log("schoolfactory get school by id:", schoolId);
-      return $http.get('/school/'+schoolId)
+      return $http.get('/schools/'+schoolId)
       .then(function(response)
       {
         console.log("response.data", response.data);
