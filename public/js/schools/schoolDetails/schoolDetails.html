@@ -1,9 +1,0 @@
-<div>
-  <p>{{school.name}}</p>
-  <p>{{school.city}}, {{school.state}}</p>
-  <button ng-hide="rating" ui-sref="school.rate" ng-click="rating=true">Rate</button>
-  <div ng-show="rating">
-    <button ng-show="rating" ng-click="rating=false" ui-sref="school({schoolId: school._id})">Don't Rate</button>
-  </div>
-  <ui-view></ui-view>
-</div>

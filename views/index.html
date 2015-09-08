@@ -2,32 +2,32 @@
 <html>
 <head>
     <title>Four Point Two</title>
-    <script src="/lib/angular.js"></script>
-    <script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="browser/lib/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="browser/app/main.css" rel="stylesheet">
+    <link href="browser/app/ratings/ratingForm/ratingForm.css" rel="stylesheet">
+    <link href="browser/app/filter/filter.css" rel="stylesheet">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <navbar></navbar>
 </head>
 
 <body ng-app="fourpointtwo">
-  <h1>Four Point Two</h1>
   <div ng-controller="MainController">
-    <form ng-submit="setCurrentSchoolById(currentSchoolId)">
-      <label>
-        School
-        <select ng-model="currentSchoolId">
-          <option ng-repeat="school in allSchools" value="{{school._id}}">{{school.name}}</option>
-        </select>
-      </label>
-      <input type="submit"></input>
-    </form>
+    <school-filter></school-filter>
     <ui-view></ui-view>
   </div>
 </body>
 
-<script src="app/app.js"></script>
-<script src="app/mainController.js"></script>
-<script src="app/ratings/categories/categoryFactory.js"></script>
-<script src="app/ratings/ratingFactory.js"></script>
-<script src="app/ratings/ratingForm/ratingController.js"></script>
-<script src="app/ratings/ratingForm/ratingFormState.js"></script>
-<script src="app/schools/schoolFactory.js"></script>
-<script src="app/schools/schoolDetails/schoolDetailsState.js"></script>
+<script src="browser/app/app.js"></script>
+<script src="browser/app/mainController.js"></script>
+<script src="browser/app/filter/schoolFilter/schoolFilter.js"></script>
+<script src="browser/app/ratings/categories/categoryFactory.js"></script>
+<script src="browser/app/ratings/ratingFactory.js"></script>
+<script src="browser/app/ratings/ratingForm/ratingController.js"></script>
+<script src="browser/app/ratings/ratingForm/ratingFormState.js"></script>
+<script src="browser/app/schools/schoolFactory.js"></script>
+<script src="browser/app/schools/schoolDetails/schoolDetailsState.js"></script>
+<script src="browser/components/navbar/navbar.directive.js"></script>
 </html>

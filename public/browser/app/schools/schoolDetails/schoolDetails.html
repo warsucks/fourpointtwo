@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="table">
+    <h2 class="title">School</h1>
+    <p>{{school.name}}</p>
+    <p>{{school.city}}, {{school.state}}</p>
+  </div>
+  <div class="table">
+    <h2 class="title">Ratings</h2>
+    <p ng-hide="school.existentRatings.length">No one has rated this school yet. Be the first!</p>
+    <ul ng-show="school.existentRatings.length">
+      <li style="list-style-type:none" ng-repeat="category in categories" class="row"><span class="col-lg-2">{{getCategoryDisplayStr(category)}}:</span><span class="col-lg-2">{{school.avgRatings[category]}}<span></li>
+    </ul>
+  </div>
+  <button ng-hide="rating" ui-sref="school.rate" ng-click="rating=true">Rate</button>
+  <div ng-show="rating">
+    <button ng-show="rating" ng-click="rating=false" ui-sref="school({schoolId: school._id})">Don't Rate</button>
+  </div>
+  <ui-view></ui-view>
+</div>

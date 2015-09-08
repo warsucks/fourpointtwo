@@ -1,0 +1,11 @@
+<div class="container">
+  <form class="table filter" align="center" ng-submit="setCurrentSchoolById(currentSchoolId)">
+    <label>
+      School
+      <select ng-model="currentSchoolId">
+        <option ng-repeat="school in allSchools" value="{{school._id}}">{{school.name}}</option>
+      </select>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+</div>

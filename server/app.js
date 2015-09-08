@@ -11,11 +11,11 @@ var app = express(); // Create an express app!
 module.exports = app; // Export it so it can be require('')'d
 
 // The path of our public directory. ([ROOT]/public)
-var browserPath = path.join(__dirname, '../browser');
-var bowerPath = path.join(__dirname, '../bower_components');
-
+var publicPath = path.join(__dirname, '../public');
 // The path of our index.html file. ([ROOT]/index.html)
 var indexHtmlPath = path.join(__dirname, '../views/index.html');
+
+app.use(require('./sass.middleware.js'));
 
 // http://nodejs.org/docs/latest/api/globals.html#globals_dirname
 // for more information about __dirname
@@ -26,8 +26,7 @@ var indexHtmlPath = path.join(__dirname, '../views/index.html');
 // When our server gets a request and the url matches
 // something in our public folder, serve up that file
 // e.g. angular.js, style.css
-app.use(express.static(browserPath));
-app.use(express.static(bowerPath));
+app.use(express.static(publicPath));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -67,7 +66,6 @@ app.get('/rating/:schoolId', function(req, res, next)
   Rating.find({school: schoolId})
   .then(function(ratings)
   {
-    console.log("got ratings by schoolId", ratings)
     res.send(ratings)
   })
   .then(null, next);
@@ -75,7 +73,6 @@ app.get('/rating/:schoolId', function(req, res, next)
 
 app.post('/rating', function(req, res, next)
 {
-  console.log("posting rating", req.body)
   var userId = req.body.userId;
   var schoolId = req.body.schoolId;
   //var ratingId = req.body.ratingId; assume that the rating does not yet exist
@@ -104,8 +101,17 @@ app.post('/rating', function(req, res, next)
     }
     else
     {
-      existingRatings = ratings;
-      return existingRatings;
+      console.log("found existent rating for user")
+      Object.keys(ratings).forEach(function(key)
+      {
+        existingRatings.values[key] = ratings[key];
+        console.log("replacing key", key)
+      });
+      return existingRatings.save()
+      .then(function(ratings)
+      {
+        return existingRatings;
+      });
     }
   })
   .then(function(ratings)

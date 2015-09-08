@@ -1,0 +1,7 @@
+.filter select {
+  background-color: white;
+  border-color: gray;
+  border-radius: 3px; }
+
+.filter button {
+  background-color: pink; }
